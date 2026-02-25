@@ -37,7 +37,9 @@
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
@@ -755,6 +757,10 @@ footer {
         gap: 2.5rem;
         transition: 0.5s cubic-bezier(0.2, 0, 0, 1);
         z-index: 1050;
+    }
+
+    .nav-links.active {
+        right: 0;
     }
 
     .nav-links a {
