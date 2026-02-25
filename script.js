@@ -1,33 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                // Close mobile menu if open
-                const navLinks = document.querySelector('.nav-links');
-                const menuToggle = document.getElementById('menuToggle');
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.addEventListener('click', function (e) {
+    //         e.preventDefault();
+    //         const target = document.querySelector(this.getAttribute('href'));
+    //         if (target) {
+    //             // Close mobile menu if open
+    //             const navLinks = document.querySelector('.nav-links');
+    //             const menuToggle = document.getElementById('menuToggle');
+    //             navLinks.classList.remove('active');
+    //             menuToggle.classList.remove('active');
 
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+    //             target.scrollIntoView({
+    //                 behavior: 'smooth',
+    //                 block: 'start'
+    //             });
+    //         }
+    //     });
+    // });
 
-    // Navbar Scroll Effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    // // Navbar Scroll Effect
+    // const navbar = document.querySelector('.navbar');
+    // window.addEventListener('scroll', () => {
+    //     if (window.scrollY > 50) {
+    //         navbar.classList.add('scrolled');
+    //     } else {
+    //         navbar.classList.remove('scrolled');
+    //     }
+    // });
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -47,13 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hero image placeholder - Dark themed
+    // Hero image placeholder - Productivity themed
     const heroImage = document.getElementById('heroImage');
     if (heroImage) {
-        heroImage.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2070';
-        heroImage.onerror = function () {
-            this.src = 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2070';
-        };
+        heroImage.src = 'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&q=80&w=2070';
     }
 
     // Intersection Observer for fade-in animations
