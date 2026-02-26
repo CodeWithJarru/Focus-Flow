@@ -5,6 +5,9 @@ async function loadComponent(id, url, callback) {
         if (!response.ok) throw new Error(`Failed to load ${url}`);
         const html = await response.text();
         document.getElementById(id).innerHTML = html;
+        if (id === 'footer') {
+            document.getElementById(id).style.marginTop = '70px';
+        }
         if (callback) callback();
     } catch (error) {
         console.error('Error loading component:', error);
