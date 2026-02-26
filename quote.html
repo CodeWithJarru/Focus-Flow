@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | FocusFlow OS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .quote-container {
+            padding: 160px 0 100px;
+            background: var(--bg-sidebar);
+            min-height: 100vh;
+        }
+
+        .quote-card {
+            background: #fff;
+            padding: 4rem;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--border);
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .quote-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .quote-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        #successMessage {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #10B981;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .quote-card {
+                padding: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" id="navbar"></header>
+
+    <main class="quote-container">
+        <div class="container">
+            <div class="quote-card">
+                <div id="quoteForm">
+                    <div class="quote-header">
+                        <div class="badge">Inquiry Protocol</div>
+                        <h1>Get a <span>Quote.</span></h1>
+                        <p>Tell us about your requirements and our team will build your custom FocusFlow deployment.</p>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="john@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" placeholder="Acme Inc.">
+                            </div>
+                            <div class="form-group">
+                                <label>Deployment Type</label>
+                                <select>
+                                    <option>Individual Elite</option>
+                                    <option>Boutique Team</option>
+                                    <option>Enterprise Grid</option>
+                                    <option>Custom Protocol</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Requirement Intel (Message)</label>
+                                <textarea placeholder="Describe your focus goals and team size..."></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg submit-btn">Submit Request</button>
+                    </form>
+                </div>
+
+                <div id="successMessage">
+                    <div class="success-icon">✓</div>
+                    <h2>Request Sent.</h2>
+                    <p>Intel received. An operator will contact you shortly to finalize your deployment.</p>
+                    <a href="index.html" class="btn btn-outline" style="margin-top: 2rem;">Return to System</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            document.getElementById('quoteForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

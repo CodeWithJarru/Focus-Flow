@@ -1,48 +1,45 @@
+// Function to load HTML components
+async function loadComponent(id, url, callback) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        const html = await response.text();
+        document.getElementById(id).innerHTML = html;
+        if (callback) callback();
+    } catch (error) {
+        console.error('Error loading component:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    //     anchor.addEventListener('click', function (e) {
-    //         e.preventDefault();
-    //         const target = document.querySelector(this.getAttribute('href'));
-    //         if (target) {
-    //             // Close mobile menu if open
-    //             const navLinks = document.querySelector('.nav-links');
-    //             const menuToggle = document.getElementById('menuToggle');
-    //             navLinks.classList.remove('active');
-    //             menuToggle.classList.remove('active');
+    // Load Navbar and Footer
+    loadComponent('navbar', 'navbar.html', initNavbarLogic);
+    loadComponent('footer', 'footer.html');
 
-    //             target.scrollIntoView({
-    //                 behavior: 'smooth',
-    //                 block: 'start'
-    //             });
-    //         }
-    //     });
-    // });
+    function initNavbarLogic() {
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.querySelector('.nav-links');
 
-    // // Navbar Scroll Effect
-    // const navbar = document.querySelector('.navbar');
-    // window.addEventListener('scroll', () => {
-    //     if (window.scrollY > 50) {
-    //         navbar.classList.add('scrolled');
-    //     } else {
-    //         navbar.classList.remove('scrolled');
-    //     }
-    // });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
 
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.querySelector('.nav-links');
+                // Prevent scrolling when menu is open
+                if (navLinks.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-
-            // Prevent scrolling when menu is open
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
+        // Active link highlighting
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active-link');
             }
         });
     }
@@ -68,7 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.feature-card, .pricing-card, .cta-card, .testimonial-card').forEach(el => {
-        observer.observe(el);
-    });
+    // Observe elements (using a small timeout strings newly fetched elements can be caught)
+    setTimeout(() => {
+        document.querySelectorAll('.feature-card, .pricing-card, .cta-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    }, 500);
 });

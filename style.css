@@ -11,6 +11,16 @@
     display: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -65,7 +75,7 @@ ul {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 /* Navbar */
@@ -131,6 +141,54 @@ ul {
 
 .nav-links a:hover {
     color: var(--primary);
+}
+
+.nav-links a.active-link {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.secondary-hero {
+    padding: 120px 0 60px;
+    text-align: center;
+    background: var(--bg-sidebar);
+    border-bottom: 2px solid var(--border);
+}
+
+.secondary-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.features-detail,
+.pricing-detail,
+.testimonials-detail {
+    padding: 100px 0;
+}
+
+.detail-grid {
+    display: grid;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detail-card {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    text-align: left;
+    background: #fff;
+    padding: 3rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+    .detail-card {
+        flex-direction: column;
+        padding: 2rem;
+    }
 }
 
 .nav-cta {
@@ -673,11 +731,54 @@ footer {
     }
 
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2.25rem;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 
     .hero p {
+        font-size: 1rem;
         margin: 0 auto 2.5rem;
+    }
+
+    .nav-links {
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+    }
+
+    .nav-links.active {
+        visibility: visible;
+        opacity: 1;
+        right: 0;
+        pointer-events: auto;
+    }
+
+    .features-grid,
+    .pricing-grid,
+    .testimonials-grid {
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .feature-card {
+        padding: 2rem;
+    }
+
+    .nav-links {
+        display: flex;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .nav-links.active {
+        visibility: visible;
+        opacity: 1;
+        right: 0;
+        pointer-events: auto;
     }
 
     .hero-actions {
@@ -699,6 +800,10 @@ footer {
 
     .pricing-card.featured {
         transform: scale(1);
+    }
+
+    .floating-card {
+        display: none !important;
     }
 
     .nav-cta {
@@ -732,10 +837,13 @@ footer {
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    margin-right: -10px;
+    z-index: 1100;
 }
 
 @media (max-width: 968px) {
@@ -747,7 +855,7 @@ footer {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        left: 0;
         width: 100%;
         height: 100vh;
         background: var(--bg-main);
@@ -755,12 +863,14 @@ footer {
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
-        transition: 0.5s cubic-bezier(0.2, 0, 0, 1);
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
         z-index: 1050;
+        display: flex;
     }
 
     .nav-links.active {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav-links a {

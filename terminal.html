@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal | FocusFlow Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        .terminal-window {
+            background: #000;
+            color: #10B981;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #10B981;
+            margin-top: 4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
+
+        .line {
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt {
+            color: #facc15;
+        }
+
+        .type {
+            border-right: 2px solid #10B981;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" id="navbar"></header>
+
+    <main>
+        <section class="hero secondary-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="badge">Advanced Command Line</div>
+                    <h1>System <span>Terminal.</span></h1>
+                    <p>Direct interface for high-level system configuration and real-time state manipulation. For elite
+                        operators only.</p>
+
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="line"><span class="prompt">guest@focusflow:~$</span> session --init "Deep Work"
+                            </div>
+                            <div class="line">> Initializing neuro-sync protocol... [OK]</div>
+                            <div class="line">> Shielding distracting frequencies... [OK]</div>
+                            <div class="line">> Cognitive load balance established at 82%.</div>
+                            <div class="line"><span class="prompt">guest@focusflow:~$</span> status --live</div>
+                            <div class="line">> Heart Rate: 68 BPM | Focus Level: ALPHA | Sync: 0.98</div>
+                            <div class="line"><span class="prompt">guest@focusflow:~$</span> <span class="type">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer"></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
