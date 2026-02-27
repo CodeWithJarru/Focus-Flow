@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
         .status-grid {
@@ -20,11 +20,17 @@
         }
 
         .status-item {
-            background: #fff;
+            background: var(--bg-card);
             padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid var(--border);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border);
             text-align: center;
+            transition: var(--transition);
+        }
+
+        .status-item:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .status-indicator {
@@ -39,9 +45,15 @@
 
         .status-value {
             font-size: 2.5rem;
-            font-weight: 800;
+            font-weight: 700;
             display: block;
             margin: 1rem 0;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--primary);
+        }
+
+        .status-item p {
+            color: var(--text-dim);
         }
     </style>
 </head>
@@ -50,7 +62,8 @@
     <header class="navbar" id="navbar"></header>
 
     <main>
-        <section class="hero secondary-hero">
+        <section class="hero secondary-hero"
+            style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2070');">
             <div class="container">
                 <div class="hero-content">
                     <div class="badge">Live Monitoring</div>
